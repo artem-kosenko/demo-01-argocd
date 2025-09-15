@@ -34,6 +34,16 @@ Ready to run on Mac.
 
    username in `admin`, password can be found in outputs of `./setup-argocd.sh` script.
 
+4. Access Grafana UI
+
+   Run in separate console for port forwarding
+   ```
+   kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 8081:80
+   ```
+   https://127.0.0.1:8081
+
+   username: `admin`
+   password: `admin`
 
 4. STOP kubernetes
    ```

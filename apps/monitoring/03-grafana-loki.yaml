@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-loki
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://grafana.github.io/helm-charts
+    chart: loki
+    targetRevision: 6.40.1
+    helm:
+      values: |
+        persistence:
+          enabled: true
+          size: 10Gi
+        config:
+          table_manager:
+            retention_deletes_enabled: true
+            retention_period: 7d
+        schema_config:
+          configs:
+            - from: 2020-10-24
+              store: boltdb-shipper
+              object_store: filesystem
+              schema: v11
+              index:
+                prefix: index_
+                period: 24h
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  dependsOn:
+    - kube-prometheus-stack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
