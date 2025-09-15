@@ -11,33 +11,23 @@ spec:
     targetRevision: 0.133.0
     helm:
       values: |
+        image:
+          repository: otel/opentelemetry-collector-contrib
+          tag: "0.133.0"
         mode: daemonset
-
-        presets:
-          logsCollection:
-            enabled: true
-            includeCollectorLogs: false
-          kubernetesAttributes:
-            enabled: true
-            extractAllPodLabels: true
-            extractAllPodAnnotations: true
-          kubeletMetrics:
-            enabled: true
-
         config:
           receivers:
             filelog:
               include:
-                - /var/log/pods/*/*/*.log
+                - "/var/log/pods/*/*/*.log"
               start_at: beginning
               operators:
                 - type: container
           processors:
             batch: {}
           exporters:
-            debug: {}
             loki:
-              endpoint: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
+              endpoint: "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
           service:
             pipelines:
               logs:
