@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap
+  name: bootstrap-monitoring
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/artem-kosenko/demo-01-argocd.git
     targetRevision: main
-    path: apps
+    path: apps/monitoring
   destination:
     server: https://kubernetes.default.svc
     namespace: default
