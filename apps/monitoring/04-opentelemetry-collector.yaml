@@ -16,6 +16,13 @@ spec:
         presets:
           logsCollection:
             enabled: true
+            includeCollectorLogs: false
+          kubernetesAttributes:
+            enabled: true
+            extractAllPodLabels: true
+            extractAllPodAnnotations: true
+          kubeletMetrics:
+            enabled: true
 
         config:
           receivers:
