@@ -14,5 +14,8 @@ spec:
     namespace: monitoring
   syncPolicy:
     automated:
-      prune: false       # do not delete CRDs
+      prune: false
       selfHeal: true
+    syncOptions:
+      - SkipDryRunOnMissingResource=true
+      - Validate=false
