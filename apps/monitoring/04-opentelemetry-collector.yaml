@@ -18,14 +18,21 @@ spec:
             enabled: true
 
         config:
+          receivers:
+            filelog:
+              include:
+                - /var/log/pods/*/*/*.log
+              start_at: beginning
+              operators:
+                - type: container
           exporters:
             loki:
               endpoint: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
           service:
             pipelines:
               logs:
-                exporters:
-                  - loki
+                receivers: [filelog]
+                exporters: [loki]
 
   destination:
     server: https://kubernetes.default.svc
