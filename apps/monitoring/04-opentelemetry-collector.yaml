@@ -26,8 +26,8 @@ spec:
           processors:
             batch: {}
           exporters:
-            otlp:
-              endpoint: "http://loki-gateway.monitoring.svc.cluster.local:80/loki/api/v1/push"
+            otlphttp:
+              endpoint: "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
           service:
             pipelines:
               logs:
