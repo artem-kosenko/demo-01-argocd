@@ -33,7 +33,7 @@ spec:
               logs:
                 receivers: [filelog]
                 processors: [batch]
-                exporters: [otlp]
+                exporters: [otlphttp]
 
   destination:
     server: https://kubernetes.default.svc
