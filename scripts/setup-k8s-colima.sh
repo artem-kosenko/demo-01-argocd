@@ -37,7 +37,7 @@ fi
 
 # Start Colima with Kubernetes enabled
 echo "🚀 Starting Colima with Kubernetes..."
-colima start --cpu 4 --memory 6 --disk 20 --arch aarch64 --kubernetes
+colima start --cpu 4 --memory 8 --disk 20 --arch aarch64 --kubernetes
 
 # Verify cluster status
 echo "🔍 Verifying Kubernetes cluster..."
