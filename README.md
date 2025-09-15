@@ -18,6 +18,12 @@ Ready to run on Mac.
    ./setup-argocd.sh
    ```
 
+3. Deploy ArgoCD bootstrap-app
+
+   ```
+   kubectl apply -f bootstrap/bootstrap-app.yaml -n argocd
+   ```
+
 3. Access ArgoCD UI
    
    Run in separate console for port forwarding
