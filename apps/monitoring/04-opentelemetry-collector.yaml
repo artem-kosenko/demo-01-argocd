@@ -35,6 +35,7 @@ spec:
           processors:
             batch: {}
           exporters:
+            debug: {}
             loki:
               endpoint: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
           service:
