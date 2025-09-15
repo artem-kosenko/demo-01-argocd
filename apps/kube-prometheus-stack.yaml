@@ -1,30 +1,30 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: kube-prometheus-stack
-#   namespace: argocd
-# spec:
-#   project: default
-#   source:
-#     repoURL: https://prometheus-community.github.io/helm-charts
-#     targetRevision: 77.6.2
-#     chart: kube-prometheus-stack
-#     helm:
-#       installCRDs: false  # skip CRDs here
-#       values: |
-#         grafana:
-#           adminPassword: admin
-#           service:
-#             type: ClusterIP
-#         prometheus:
-#           prometheusSpec:
-#             serviceMonitorSelectorNilUsesHelmValues: false
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: monitoring
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
-#   dependsOn:
-#     - prometheus-operator-crds
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 77.6.2
+    chart: kube-prometheus-stack
+    helm:
+      installCRDs: false
+      values: |
+        grafana:
+          adminPassword: admin
+          service:
+            type: ClusterIP
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelectorNilUsesHelmValues: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  dependsOn:
+    - prometheus-operator-crds
