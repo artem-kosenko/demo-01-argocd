@@ -9,16 +9,16 @@ spec:
     repoURL: https://grafana.github.io/helm-charts
     chart: loki
     targetRevision: 6.40.0
-    helm:
-      values: |
-        loki:
-          persistence:
-            enabled: true
-            size: 5Gi
-          storage:
-            type: filesystem
-          config:
-            auth_enabled: false
+    # helm:
+    #   values: |
+    #     loki:
+    #       persistence:
+    #         enabled: true
+    #         size: 5Gi
+    #       storage:
+    #         type: filesystem
+    #       config:
+    #         auth_enabled: false
 
 
   destination:
