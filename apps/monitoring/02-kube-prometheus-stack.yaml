@@ -10,8 +10,9 @@ spec:
     targetRevision: 77.6.2
     chart: kube-prometheus-stack
     helm:
-      installCRDs: false
       values: |
+        crds:
+          enabled: false
         grafana:
           adminPassword: admin
           service:
