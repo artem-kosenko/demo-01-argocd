@@ -26,14 +26,14 @@ spec:
           processors:
             batch: {}
           exporters:
-            loki:
+            otlp:
               endpoint: "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
           service:
             pipelines:
               logs:
                 receivers: [filelog]
                 processors: [batch]
-                exporters: [loki]
+                exporters: [otlp]
 
   destination:
     server: https://kubernetes.default.svc
