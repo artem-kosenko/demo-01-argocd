@@ -27,6 +27,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  dependsOn:
-    - prometheus-operator-crds
     
