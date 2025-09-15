@@ -24,7 +24,8 @@ spec:
           service:
             pipelines:
               logs:
-                exporters: [loki]
+                exporters:
+                  - loki
 
   destination:
     server: https://kubernetes.default.svc
