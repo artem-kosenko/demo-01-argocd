@@ -21,3 +21,8 @@ spec:
     # syncOptions:
     #   - SkipDryRunOnMissingResource=true
     #   - Validate=false
+ignoreDifferences:
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    jsonPointers:
+      - /metadata/annotations
