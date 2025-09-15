@@ -28,6 +28,7 @@ spec:
           exporters:
             otlphttp:
               endpoint: "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
+              X-Scope-OrgID: "1"        # Grafana / Loki org ID
           service:
             pipelines:
               logs:
