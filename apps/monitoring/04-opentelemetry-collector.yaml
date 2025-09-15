@@ -13,16 +13,14 @@ spec:
       values: |
         mode: daemonset
 
+        presets:
+          logsCollection:
+            enabled: true
+            includeCollectorLogs: true
+          kubeletMetrics:
+            enabled: true
+
         config:
-          receivers:
-            filelog:
-              include:
-                - /var/log/pods/*/*/*.log
-              start_at: beginning
-              operators:
-                - type: container
-          processors:
-            batch: {}
           exporters:
             loki:
               endpoint: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
