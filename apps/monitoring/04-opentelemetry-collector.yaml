@@ -20,23 +20,21 @@ spec:
             filelog:
               include:
                 - "/var/log/pods/*/*/*.log"
-              start_at: end
+              start_at: beginning
               operators:
                 - type: json_parser
+                  id: parse_outer_json
                   parse_from: body
-                  id: parse_outer
                   timestamp:
                     parse_from: time
-                    layout_type: rfc3339
+                    layout: '2006-01-02T15:04:05.999999999Z07:00'
 
                 - type: json_parser
-                  id: parse_inner
-                  parse_from: attributes.log
-                  on_error: drop
-
-                - type: remove
-                  id: cleanup
-                  field: attributes.log
+                  id: parse_inner_json
+                  parse_from: body.log
+                  timestamp:
+                    parse_from: time
+                    layout: '2006-01-02T15:04:05Z'
 
           processors:
             k8sattributes:
