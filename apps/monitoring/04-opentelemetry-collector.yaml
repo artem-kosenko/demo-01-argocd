@@ -23,15 +23,15 @@ spec:
               start_at: end
               operators:
                 - type: json_parser
-                  parse_from: body
+                  from: body
                   id: parse_outer
                   timestamp:
-                    parse_from: time
+                    from: time
                     layout_type: rfc3339
 
                 - type: json_parser
                   id: parse_inner
-                  parse_from: attributes.log
+                  from: attributes.log
                   on_error: drop
 
                 - type: remove
