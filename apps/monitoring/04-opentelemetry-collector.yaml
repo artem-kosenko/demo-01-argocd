@@ -20,22 +20,46 @@ spec:
             filelog:
               include:
                 - "/var/log/pods/*/*/*.log"
-              start_at: beginning
-              operators:
-                - type: container
+              start_at: end
+          operators:
+            - type: json_parser
+              parse_from: body
+              id: parse_outer
+              timestamp:
+                parse_from: time
+                layout_type: rfc3339
+
+            - type: json_parser
+              id: parse_inner
+              parse_from: attributes.log
+              on_error: drop
+
+            - type: remove
+              id: cleanup
+              field: attributes.log
+
           processors:
+            k8sattributes:
+              auth_type: serviceAccount
+              extract:
+                metadata:
+                  - namespace
+                  - pod
+                  - container
+                labels:
+                  - app
+                  - app.kubernetes.io/name
             batch: {}
+
           exporters:
             otlphttp:
               endpoint: "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
-              # headers:
-              #   X-Scope-OrgId: default
               compression: snappy
           service:
             pipelines:
               logs:
                 receivers: [filelog]
-                processors: [batch]
+                processors: [k8sattributes, batch]
                 exporters: [otlphttp]
 
   destination:
