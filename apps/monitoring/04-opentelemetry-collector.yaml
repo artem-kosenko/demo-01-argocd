@@ -23,18 +23,17 @@ spec:
               start_at: beginning
               operators:
                 - type: json_parser
-                  id: parse_outer
                   parse_from: body
                   timestamp:
                     parse_from: body.time
-                    layout: '%Y-%m-%dT%H:%M:%S.%LZ'
+                    layout: '2006-01-02T15:04:05Z'
 
                 - type: json_parser
-                  id: parse_inner
-                  parse_from: body.log
+                  parse_from: body.log  # this is a string containing JSON
+                  parse_to: body        # replace original body with parsed inner JSON
                   timestamp:
-                    parse_from: body.log.time
-                    layout: '%Y-%m-%dT%H:%M:%S.%LZ'
+                    parse_from: body.time
+                    layout: '2006-01-02T15:04:05Z'
 
           processors:
             # k8sattributes:
