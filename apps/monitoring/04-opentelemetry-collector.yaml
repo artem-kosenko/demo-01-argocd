@@ -23,7 +23,7 @@ spec:
               start_at: end
               operators:
                 - type: json_parser
-                  from: body
+                  parse_from: body
                   id: parse_outer
                   timestamp:
                     parse_from: time
@@ -31,7 +31,7 @@ spec:
 
                 - type: json_parser
                   id: parse_inner
-                  from: attributes.log
+                  parse_from: attributes.log
                   on_error: drop
 
                 - type: remove
