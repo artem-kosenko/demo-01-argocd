@@ -27,7 +27,7 @@ spec:
                   parse_from: body
                   timestamp:
                     parse_from: body.time
-                    layout: '2006-01-02T15:04:05.999999999Z'
+                    layout: '2006-01-02T15:04:05Z'
 
                 - type: json_parser
                   id: parse_inner
