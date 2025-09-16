@@ -27,14 +27,14 @@ spec:
                   parse_from: body
                   timestamp:
                     parse_from: body.time
-                    layout: '2006-01-02T15:04:05Z'
+                    layout: '%Y-%m-%dT%H:%M:%S.%LZ'
 
                 - type: json_parser
                   id: parse_inner
                   parse_from: body.log
                   timestamp:
                     parse_from: body.log.time
-                    layout: '2006-01-02T15:04:05Z'
+                    layout: '%Y-%m-%dT%H:%M:%S.%LZ'
 
           processors:
             k8sattributes:
