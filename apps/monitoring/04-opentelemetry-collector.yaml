@@ -81,7 +81,7 @@ spec:
             
 
           exporters:
-            otlphttp:
+            otlphttp/logs:
               endpoint: "http://loki-gateway.monitoring.svc.cluster.local/otlp"
               compression: snappy
               headers:
@@ -92,7 +92,7 @@ spec:
                 receivers: [filelog]
                 # processors: [batch, k8sattributes]
                 processors: [batch]
-                exporters: [otlphttp]
+                exporters: [otlphttp/logs]
 
         clusterRole:
           create: true
