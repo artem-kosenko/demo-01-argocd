@@ -53,6 +53,9 @@ spec:
         gateway:
           service:
             type: ClusterIP
+          caches:
+            index:
+              enabled: true
 
 
 
