@@ -97,10 +97,7 @@ spec:
 
         clusterRole:
           create: true
-          rules:
-            - apiGroups: [""]
-              resources: ["pods", "nodes"]
-              verbs: ["get", "list", "watch"]      
+    
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
