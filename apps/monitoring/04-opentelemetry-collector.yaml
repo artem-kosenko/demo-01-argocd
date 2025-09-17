@@ -23,7 +23,6 @@ spec:
           kubernetesAttributes:
             enabled: true
             extractAllPodLabels: false
-            extractAppPodAnnotations: false
         
         config:
           receivers:
