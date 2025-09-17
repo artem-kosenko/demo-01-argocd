@@ -84,7 +84,7 @@ spec:
           exporters:
             otlphttp:
               # endpoint: "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
-              endpoint: "http://loki-gateway.monitoring.svc.cluster.local/oltp"
+              endpoint: "http://loki-gateway.monitoring.svc.cluster.local/otlp/v1/logs"
               compression: snappy
           service:
             pipelines:
