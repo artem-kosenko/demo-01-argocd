@@ -22,14 +22,8 @@ spec:
             enabled: true
           kubernetesAttributes:
             enabled: true
-            extractAppPodLabels: true
+            extractAllPodLabels: false
             extractAppPodAnnotations: false
-        
-        extraEnvs:
-          - name: KUBE_NODE_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.nodeName
         
         config:
           receivers:
