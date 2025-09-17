@@ -23,6 +23,15 @@ spec:
           kubernetesAttributes:
             enabled: true
             extractAllPodLabels: false
+
+        limits_config:
+          reject_old_samples: true
+          reject_old_samples_max_age: 168h
+          max_cache_freshness_per_query: 10m
+          split_queries_by_interval: 15m
+          query_timeout: 300s
+          volume_enabled: true
+          allow_structured_metadata: true # allow structured logs in loki
         
         config:
           receivers:
@@ -37,7 +46,6 @@ spec:
                   timestamp:
                     parse_from: body.time
                     layout: '%Y-%m-%dT%H:%M:%S.%LZ'
-
 
           processors:
             batch: {}
