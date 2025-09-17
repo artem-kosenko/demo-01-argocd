@@ -33,16 +33,16 @@ spec:
               operators:
                 - type: json_parser
                   parse_from: body
+                  parse_to: body
                   timestamp:
                     parse_from: body.time
                     layout: '%Y-%m-%dT%H:%M:%S.%LZ'
 
                 - type: json_parser
-                  parse_from: body.log  # this is a string containing JSON
-                  parse_to: body        # replace original body with parsed inner JSON
-                  timestamp:
-                    parse_from: body.time
-                    layout: '%Y-%m-%dT%H:%M:%S.%LZ'
+                  parse_from: body.log
+                  parse_to: body
+                  on_error: skip
+
 
           processors:
             # k8sattributes:
