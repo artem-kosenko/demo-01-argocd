@@ -20,7 +20,7 @@ spec:
         presets:
           logsCollection:
             enabled: true
-          kubernesAttributes:
+          kubernetesAttributes:
             enabled: true
         
         extraEnvs:
