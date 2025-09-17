@@ -18,7 +18,7 @@ spec:
             allocatedMemory: 512 # default is 8192
 
           commonConfig:
-            replication_factor: 3
+            replication_factor: 1
           schemaConfig:
             configs:
               - from: "2024-04-01"
@@ -42,7 +42,7 @@ spec:
         deploymentMode: SingleBinary
 
         singleBinary:
-          replicas: 3
+          replicas: 1 
 
         # Zero out replica counts of other deployment modes
         backend:
