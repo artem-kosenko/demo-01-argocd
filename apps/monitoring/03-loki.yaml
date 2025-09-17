@@ -24,7 +24,8 @@ spec:
                   prefix: loki_index_
                   period: 24h
           ingester:
-            replicas: 1
+            autoscaling:
+              enabled: true
             chunk_encoding: snappy
           querier:
             replicas: 1
