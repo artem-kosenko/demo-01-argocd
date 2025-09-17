@@ -84,8 +84,6 @@ spec:
             otlphttp/logs:
               endpoint: "http://loki-gateway.monitoring.svc.cluster.local/otlp"
               compression: snappy
-              headers:
-                "X-Scope-OrgId": "fake"
           service:
             pipelines:
               logs:
