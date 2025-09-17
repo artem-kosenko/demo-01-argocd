@@ -24,8 +24,10 @@ spec:
                   prefix: loki_index_
                   period: 24h
           ingester:
+            replicas: 1
             chunk_encoding: snappy
           querier:
+            replicas: 1
             # Default is 4, if you have enough memory and CPU you can increase, reduce if OOMing
             max_concurrent: 4
           pattern_ingester:
@@ -51,6 +53,7 @@ spec:
           enabled: true
 
         gateway:
+          replicas: 1
           service:
             type: ClusterIP
           caches:
