@@ -12,6 +12,8 @@ spec:
     helm:
       values: |
         loki:
+          auth_enabled: false # disable auth for simplicity, do not use in production
+
           schemaConfig:
             configs:
               - from: "2024-04-01"
