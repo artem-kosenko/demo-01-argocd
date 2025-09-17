@@ -88,9 +88,8 @@ spec:
             pipelines:
               logs:
                 receivers: [filelog]
-                # processors: [batch, k8sattributes]
                 processors: [batch]
-                exporters: [otlphttp/logs]
+                exporters: [debug, otlphttp/logs]
 
         clusterRole:
           create: true
