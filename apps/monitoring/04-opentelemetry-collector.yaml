@@ -22,8 +22,8 @@ spec:
             enabled: true
           kubernetesAttributes:
             enabled: true
-            extractAppLabels: true
-            extractAppAnnotations: false
+            extractAppPodLabels: true
+            extractAppPodAnnotations: false
         
         extraEnvs:
           - name: KUBE_NODE_NAME
