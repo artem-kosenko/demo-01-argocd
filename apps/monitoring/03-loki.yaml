@@ -34,6 +34,9 @@ spec:
 
         deploymentMode: SimpleScalable
 
+        chunksCache:
+          allocatedMemory: 512 # default is 8192
+
         backend:
           replicas: 1
         read:
