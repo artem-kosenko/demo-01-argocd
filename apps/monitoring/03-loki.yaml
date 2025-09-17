@@ -54,7 +54,7 @@ spec:
         read:
           replicas: 0
         write:
-          replicas: 0q
+          replicas: 0
         ingester:
           replicas: 0
         querier:
