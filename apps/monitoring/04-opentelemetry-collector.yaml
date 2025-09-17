@@ -22,15 +22,6 @@ spec:
             enabled: true
           kubernesAttributes:
             enabled: true
-            # If you want to use k8sattributes processor, the collector needs permissions to read
-            # pod and node information. The default service account used by the collector does not have
-            # these permissions, so we need to create a Role and RoleBinding to grant them.
-            rbac:
-              create: true
-              rules:
-                - apiGroups: [""]
-                  resources: ["pods", "nodes"]
-                  verbs: ["get", "list", "watch"]
         
         extraEnvs:
           - name: KUBE_NODE_NAME
@@ -108,7 +99,13 @@ spec:
                 receivers: [filelog]
                 processors: [batch]
                 exporters: [otlphttp]
-        
+
+        clusterRole:
+          create: true
+          rules:
+            - apiGroups: [""]
+              resources: ["pods", "nodes"]
+              verbs: ["get", "list", "watch"]      
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
