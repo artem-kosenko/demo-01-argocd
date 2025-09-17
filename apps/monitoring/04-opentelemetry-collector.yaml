@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: opentelemetry-collector
   namespace: argocd
+  anotations:
+    argocd.argoproj.io/sync-options: suspend=true
 spec:
   project: default
   source:
