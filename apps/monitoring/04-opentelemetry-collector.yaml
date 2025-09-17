@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: opentelemetry-collector
   namespace: argocd
-  anotations:
-    argocd.argoproj.io/sync-options: suspend=true
 spec:
   project: default
   source:
@@ -100,7 +98,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: monitoring
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  syncPolicy: {}
+    # automated:
+    #   prune: true
+    #   selfHeal: true
