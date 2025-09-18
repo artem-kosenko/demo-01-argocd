@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap-monitoring
+  name: grafana-dashboards
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/artem-kosenko/demo-01-argocd.git
     targetRevision: main
-    path: apps/monitoring
+    path: apps/monitoring/grafana-dashboards
+  destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: monitoring
   syncPolicy:
     automated:
       prune: true
