@@ -5,7 +5,7 @@ namespace: monitoring
 configMapGenerator:
   - name: grafana-dashboards
     files:
-      - grafana-dashboards/loki-logs.json
+      - loki-logs.json
     options:
       labels:
         grafana_dashboard: "1"
