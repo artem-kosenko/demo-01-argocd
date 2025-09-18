@@ -81,15 +81,19 @@ spec:
             
 
           exporters:
-            otlphttp/logs:
+            otlphttp/loki:
               endpoint: "http://loki-gateway.monitoring.svc.cluster.local/otlp"
-              compression: snappy
+              tls:
+                insecure: true
+              # compression: snappy
+            debug: {}
+            
           service:
             pipelines:
               logs:
                 receivers: [filelog]
                 processors: [batch]
-                exporters: [debug, otlphttp/logs]
+                exporters: [otlphttp/loki, debug]
 
         clusterRole:
           create: true
@@ -98,7 +102,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: monitoring
 
-  syncPolicy: {}
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
