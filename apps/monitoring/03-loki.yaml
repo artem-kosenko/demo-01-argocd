@@ -37,6 +37,10 @@ spec:
             allow_structured_metadata: true
             volume_enabled: true
 
+          server:
+            grpc_max_receive_message_size: 40960000    # 4MB
+            grpc_max_send_message_size: 40960000       # 4MB
+
           ruler:
             enable_api: true
 

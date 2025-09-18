@@ -40,9 +40,10 @@ spec:
 
           processors:
             batch:
-              send_batch_size: 1024
-              send_batch_max_size: 1024
-              timeout: 10s 
+              send_batch_size: 4096 # 4MB
+              send_batch_max_size: 4096 # 4MB
+              timeout: 10s
+              
             k8sattributes:
               auth_type: "serviceAccount"
               passthrough: false
