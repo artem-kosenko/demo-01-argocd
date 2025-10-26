@@ -21,8 +21,8 @@ Ready to run on Mac.
 3. Deploy ArgoCD bootstrap-app
 
    ```
-   kubectl apply -f bootstrap/bootstrap-monitoring.yaml -n argocd
-   kubectl apply -f bootstrap/bootstrap-dev.yaml -n argocd
+   kubectl apply -f bootstrap/00-bootstrap-monitoring.yaml -n argocd
+   kubectl apply -f bootstrap/01-bootstrap-dev.yaml -n argocd
    ```
 
 3. Access ArgoCD UI
