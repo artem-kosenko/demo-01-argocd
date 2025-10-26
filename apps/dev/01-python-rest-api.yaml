@@ -11,6 +11,7 @@ spec:
     targetRevision: develop
     path: templates/python-rest-api/charts/python-rest-api
     helm:
+      releaseName: java-rest-api
       valueFiles:
         - values.yaml
 
