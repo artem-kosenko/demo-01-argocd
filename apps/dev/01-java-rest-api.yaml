@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: java-rest-api-dev
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/artem-kosenko/demo-github-actions.git
+    targetRevision: main
+    path: templates/java-rest-api/charts/java-rest-api
+    helm:
+      releaseName: java-rest-api
+      values: |
+        image:
+          repository: my-java-rest-api
+          tag: latest
+        service:
+          type: ClusterIP
+          port: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: http
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: java-rest-api-dev
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
