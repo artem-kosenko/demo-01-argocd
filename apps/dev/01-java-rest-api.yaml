@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/artem-kosenko/demo-github-actions.git
-    targetRevision: main
+    targetRevision: develop
     path: templates/java-rest-api/charts/java-rest-api
     helm:
       releaseName: java-rest-api
