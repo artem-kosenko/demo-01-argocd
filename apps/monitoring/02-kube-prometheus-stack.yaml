@@ -26,6 +26,10 @@ spec:
                   access: proxy
                   url: http://loki-gateway.monitoring.svc.cluster.local:80
                   isDefault: false
+          sidecar:
+            dashboards:
+              enabled: true
+              
         prometheus:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
