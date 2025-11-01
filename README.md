@@ -9,7 +9,7 @@ Ready to run on Mac.
 
 1. START (setup) kubernetes
     ```
-    ./scripts/setup-k8s-colima.sh
+    ./scripts/start-k8s-colima.sh
     ```
 
 2. START (setup) ArgoCD
